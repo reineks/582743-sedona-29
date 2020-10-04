@@ -1,13 +1,13 @@
 var openWindow = document.querySelector(".booking-search-btn");
 var formPopup = document.querySelector(".main-form-wrapper");
 var formClose = formPopup.querySelector(".form-hidden");
-var formInput = formPopup.querySelector(".booking-search-date-field");
+let formInputs = [];
 
 var isStorageSupport = true;
 var storage = "";
 
 try {
-  storage = localStorage.getItem("date");
+  storage = localStorage.length;
 } catch (err) {
   isStorageSupport = false;
 }
@@ -16,26 +16,35 @@ formPopup.classList.add("form-hidden");
 
 openWindow.addEventListener("click", function (evt) {
   evt.preventDefault();
-  formPopup.classList.remove("form-hidden");
-  formPopup.classList.add("main-form-show");
+  formInputs = Array.from(formPopup.querySelectorAll(".booking-search-date-field"));
+
+  formPopup.classList.toggle("form-hidden");
+  formPopup.classList.toggle("main-form-show");
 
   if (storage) {
-    formInput.value = storage;
+    formInputs.forEach(input => {
+      input.value = localStorage.getItem(input.name);
+    })
   }
 
-  formInput.focus();
+  formInputs[0].focus();
 });
 
-formPopup.addEventListener("post", function (evt) {
-  if (!formInput.value) {
+formPopup.addEventListener("submit", function (evt) {
+  const filteredInputs = formInputs.filter(input => input.value);
+
+  if (!filteredInputs.length) {
     evt.preventDefault();
-  } else {
-    localStorage.setItem("date", formInput.value);
+    return;
   }
+
+  filteredInputs.forEach(input => {
+    localStorage.setItem(input.name, input.value);
+  })
 });
 
 window.addEventListener("keydown", function (evt) {
-  if (evt.key === 27) {
+  if (evt.key === 'Escape') {
     if (formPopup.classList.contains("main-form-show")) {
       evt.preventDefault();
       formPopup.classList.remove("main-form-show");
