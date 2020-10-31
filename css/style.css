@@ -635,7 +635,7 @@ counter-reset: feature-list;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  content: url(../img/checkbox-off.svg);
+  content: url("../img/checkbox-off.svg");
 }
 
 .hotels-filter-text {
@@ -979,7 +979,7 @@ counter-reset: feature-list;
 }
 
 .hotels-result-stars-rank {
-  background-image: url(../img/star.svg);
+  background-image: url("../img/star.svg");
   width: 0px;
   height: 17px;
   margin-top: 5px;
@@ -1248,7 +1248,7 @@ counter-reset: feature-list;
 }
 
 .hotels-filter-checkbox:disabled {
-  content: url(../img/checkbox-off-disabled.svg);
+  content: url("../img/checkbox-off-disabled.svg");
 }
 
 .hotels-filter-checkbox:disabled + label {
@@ -1256,7 +1256,7 @@ counter-reset: feature-list;
 }
 
 .hotels-filter-checkbox:checked {
-  content: url(../img/checkbox-on.svg);
+  content: url("../img/checkbox-on.svg");
 }
 
 .hotels-sort-link-ranking a:hover {
