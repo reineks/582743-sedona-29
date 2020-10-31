@@ -44,7 +44,7 @@ formPopup.addEventListener("submit", function (evt) {
 });
 
 window.addEventListener("keydown", function (evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === "Escape") {
     if (formPopup.classList.contains("main-form-show")) {
       evt.preventDefault();
       formPopup.classList.remove("main-form-show");
